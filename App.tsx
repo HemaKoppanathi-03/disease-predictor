@@ -7,12 +7,12 @@ import About from './components/About';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Spinner from './components/Spinner';
-import ChatbotWidget from './components/ChatbotWidget';
 import { Patient, DailyLog } from './types';
 
 
 export type Page = 'dashboard' | 'predictor' | 'resources' | 'about';
 type AuthPage = 'login' | 'signup';
+export type Theme = 'light' | 'dark';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
@@ -20,6 +20,29 @@ const App: React.FC = () => {
   const [patientProfile, setPatientProfile] = useState<Patient | null>(null);
   const [dailyLogs, setDailyLogs] = useState<DailyLog[]>([]);
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme') as Theme;
+    }
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  });
+  
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
   
   useEffect(() => {
     try {
@@ -29,10 +52,7 @@ const App: React.FC = () => {
         const savedLogsJSON = localStorage.getItem('healthAppDailyLogs');
         
         if (savedProfileJSON && savedLogsJSON) {
-          const savedProfile = JSON.parse(savedProfileJSON);
-          const savedLogs = JSON.parse(savedLogsJSON);
-          setPatientProfile(savedProfile);
-          setDailyLogs(savedLogs);
+          handleLogin(); // Use handleLogin to process data
         }
       }
     } catch (error) {
@@ -46,11 +66,22 @@ const App: React.FC = () => {
     }
   }, []);
 
+  const formatDate = (date: Date): string => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+  };
+
   const handleSignUp = (patient: Patient) => {
     const generateDummyLogs = (patientId: string): DailyLog[] => {
+        const today = new Date();
+        const yesterday = new Date();
+        yesterday.setDate(today.getDate() - 1);
+        
         return [
-            { log_id: 'L01', patient_id: patientId, date: '2024-07-18', vitals: { bp_systolic: 129, bp_diastolic: 83, fasting_glucose: 118, heart_rate: 79 }, sleep_hours: 5.5, symptoms: ['fatigue'], meals: [] },
-            { log_id: 'L02', patient_id: patientId, date: '2024-07-19', vitals: { bp_systolic: 127, bp_diastolic: 82, fasting_glucose: 114, heart_rate: 77 }, sleep_hours: 7.5, symptoms: [], meals: [] },
+            { log_id: 'L01', patient_id: patientId, date: formatDate(yesterday), vitals: { bp_systolic: 129, bp_diastolic: 83, fasting_glucose: 118, heart_rate: 79 }, sleep_hours: 5.5, symptoms: ['fatigue'], meals: [] },
+            { log_id: 'L02', patient_id: patientId, date: formatDate(today), vitals: { bp_systolic: 127, bp_diastolic: 82, fasting_glucose: 114, heart_rate: 77 }, sleep_hours: 7.5, symptoms: [], meals: [] },
         ];
     }
     const newLogs = generateDummyLogs(patient.patient_id);
@@ -69,9 +100,24 @@ const App: React.FC = () => {
     const savedLogsJSON = localStorage.getItem('healthAppDailyLogs');
     if (savedProfileJSON && savedLogsJSON) {
         const patient = JSON.parse(savedProfileJSON);
-        const logs = JSON.parse(savedLogsJSON);
+        let logs: DailyLog[] = JSON.parse(savedLogsJSON);
+
+        // Update log dates to be current
+        const today = new Date();
+        const yesterday = new Date();
+        yesterday.setDate(today.getDate() - 1);
+
+        if (logs.length >= 2) {
+            logs.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            logs[logs.length - 1].date = formatDate(today);
+            logs[logs.length - 2].date = formatDate(yesterday);
+        }
+
         setPatientProfile(patient);
         setDailyLogs(logs);
+
+        // Persist the updated logs and session
+        localStorage.setItem('healthAppDailyLogs', JSON.stringify(logs));
         localStorage.setItem('healthAppSessionActive', 'true');
     }
   };
@@ -84,7 +130,7 @@ const App: React.FC = () => {
 
   if (!isInitialized) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-slate-100">
+      <div className="flex h-screen w-full items-center justify-center bg-slate-100 dark:bg-slate-900">
         <Spinner />
       </div>
     );
@@ -100,7 +146,7 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (currentPage) {
       case 'dashboard':
-        return <Dashboard patient={patientProfile} dailyLogs={dailyLogs} />;
+        return <Dashboard patient={patientProfile} dailyLogs={dailyLogs} theme={theme} />;
       case 'predictor':
         return <Predictor />;
       case 'resources':
@@ -108,21 +154,22 @@ const App: React.FC = () => {
       case 'about':
         return <About />;
       default:
-        return <Dashboard patient={patientProfile} dailyLogs={dailyLogs} />;
+        return <Dashboard patient={patientProfile} dailyLogs={dailyLogs} theme={theme} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 font-sans text-slate-800">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-200">
       <Header
         currentPage={currentPage}
         onNavigate={setCurrentPage}
         onLogout={handleLogout}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
       <main className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
         {renderPage()}
       </main>
-      <ChatbotWidget />
     </div>
   );
 };

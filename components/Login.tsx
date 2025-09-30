@@ -30,41 +30,41 @@ const Login: React.FC<LoginProps> = ({ onLogin, onNavigateToSignUp }) => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
-            <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
+        <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex items-center justify-center p-4">
+            <div className="max-w-md w-full bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
                 <div className="text-center mb-8">
                     <div className="flex justify-center items-center space-x-3 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
                         </svg>
-                        <h1 className="text-2xl font-bold text-slate-800">
+                        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
                             AI Disease Risk Predictor
                         </h1>
                     </div>
-                    <p className="text-slate-600">Sign in to continue to your dashboard.</p>
+                    <p className="text-slate-600 dark:text-slate-400">Sign in to continue to your dashboard.</p>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-slate-700">Username</label>
+                        <label htmlFor="username" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Username</label>
                         <input
                             type="text"
                             name="username"
                             id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
                             required
                         />
                     </div>
                     <div>
-                        <label htmlFor="password"className="block text-sm font-medium text-slate-700">Password</label>
+                        <label htmlFor="password"className="block text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
                         <input
                             type="password"
                             name="password"
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
                             required
                         />
                     </div>
@@ -77,9 +77,9 @@ const Login: React.FC<LoginProps> = ({ onLogin, onNavigateToSignUp }) => {
                         </button>
                     </div>
                 </form>
-                <p className="mt-6 text-center text-sm text-slate-600">
+                <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
                     Don't have an account?{' '}
-                    <button onClick={onNavigateToSignUp} className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline">
+                    <button onClick={onNavigateToSignUp} className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 focus:outline-none focus:underline">
                         Sign Up
                     </button>
                 </p>

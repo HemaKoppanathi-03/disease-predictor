@@ -63,58 +63,58 @@ const SignUp: React.FC<SignUpProps> = ({ onSignUp, onNavigateToLogin }) => {
     };
     
     return (
-        <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
-            <div className="max-w-2xl w-full bg-white p-8 rounded-xl shadow-lg">
+        <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex items-center justify-center p-4">
+            <div className="max-w-2xl w-full bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
                 <div className="text-center mb-8">
                      <div className="flex justify-center items-center space-x-3 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
                         </svg>
-                        <h1 className="text-2xl font-bold text-slate-800">
+                        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
                             Create Your Account
                         </h1>
                     </div>
-                    <p className="text-slate-600 mt-2">Enter your details to personalize your health dashboard.</p>
+                    <p className="text-slate-600 dark:text-slate-400 mt-2">Enter your details to personalize your health dashboard.</p>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label htmlFor="username" className="block text-sm font-medium text-slate-700">Username</label>
-                            <input type="text" name="username" id="username" value={formData.username} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="username" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Username</label>
+                            <input type="text" name="username" id="username" value={formData.username} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="password"className="block text-sm font-medium text-slate-700">Password</label>
-                            <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="password"className="block text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
+                            <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                     </div>
-                     <hr/>
+                     <hr className="dark:border-slate-700"/>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label htmlFor="name_alias" className="block text-sm font-medium text-slate-700">Full Name</label>
-                            <input type="text" name="name_alias" id="name_alias" value={formData.name_alias} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="name_alias" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Full Name</label>
+                            <input type="text" name="name_alias" id="name_alias" value={formData.name_alias} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="dob" className="block text-sm font-medium text-slate-700">Date of Birth</label>
-                            <input type="date" name="dob" id="dob" value={formData.dob} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="dob" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Date of Birth</label>
+                            <input type="date" name="dob" id="dob" value={formData.dob} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label htmlFor="sex" className="block text-sm font-medium text-slate-700">Sex</label>
-                            <select name="sex" id="sex" value={formData.sex} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+                            <label htmlFor="sex" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Sex</label>
+                            <select name="sex" id="sex" value={formData.sex} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="height_cm" className="block text-sm font-medium text-slate-700">Height (cm)</label>
-                            <input type="number" name="height_cm" id="height_cm" value={formData.height_cm} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="height_cm" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Height (cm)</label>
+                            <input type="number" name="height_cm" id="height_cm" value={formData.height_cm} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="weight_kg" className="block text-sm font-medium text-slate-700">Weight (kg)</label>
-                            <input type="number" name="weight_kg" id="weight_kg" value={formData.weight_kg} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="weight_kg" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Weight (kg)</label>
+                            <input type="number" name="weight_kg" id="weight_kg" value={formData.weight_kg} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                     </div>
                     
@@ -124,9 +124,9 @@ const SignUp: React.FC<SignUpProps> = ({ onSignUp, onNavigateToLogin }) => {
                         </button>
                     </div>
                 </form>
-                 <p className="mt-6 text-center text-sm text-slate-600">
+                 <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
                     Already have an account?{' '}
-                    <button onClick={onNavigateToLogin} className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline">
+                    <button onClick={onNavigateToLogin} className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 focus:outline-none focus:underline">
                         Log In
                     </button>
                 </p>

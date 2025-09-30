@@ -29,18 +29,18 @@ const CategoryIcon: React.FC<{ category: Recommendation['category'] }> = ({ cate
 };
 
 const categoryColors = {
-    Diet: { bg: 'bg-green-100', text: 'text-green-800' },
-    Lifestyle: { bg: 'bg-sky-100', text: 'text-sky-800' },
-    Monitoring: { bg: 'bg-purple-100', text: 'text-purple-800' },
+    Diet: { bg: 'bg-green-100 dark:bg-green-900/50', text: 'text-green-800 dark:text-green-300' },
+    Lifestyle: { bg: 'bg-sky-100 dark:bg-sky-900/50', text: 'text-sky-800 dark:text-sky-300' },
+    Monitoring: { bg: 'bg-purple-100 dark:bg-purple-900/50', text: 'text-purple-800 dark:text-purple-300' },
 }
 
 const Recommendations: React.FC<RecommendationsProps> = ({ recommendations }) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg">
-      <h2 className="text-xl font-bold text-slate-800 mb-4">Personalized Recommendations</h2>
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
+      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Personalized Recommendations</h2>
       <div className="space-y-4">
         {recommendations.map((rec, index) => {
-          const colors = categoryColors[rec.category] || { bg: 'bg-gray-100', text: 'text-gray-800' };
+          const colors = categoryColors[rec.category] || { bg: 'bg-gray-100 dark:bg-slate-700', text: 'text-gray-800 dark:text-slate-300' };
           return (
             <div key={index} className={`p-4 rounded-lg flex items-start space-x-4 ${colors.bg}`}>
               <div className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${colors.text}`}>

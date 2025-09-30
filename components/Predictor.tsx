@@ -70,79 +70,79 @@ const Predictor: React.FC = () => {
 
     return (
         <div className="space-y-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
                 <div className="mb-6 text-center">
-                    <h2 className="text-2xl font-bold text-slate-800">Disease Risk Predictor</h2>
-                    <p className="text-slate-600 mt-1">Enter the details below to get an AI-powered risk assessment.</p>
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Disease Risk Predictor</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mt-1">Enter the details below to get an AI-powered risk assessment.</p>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Form Sections */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="md:col-span-1">
-                            <label htmlFor="age" className="block text-sm font-medium text-slate-700">Age</label>
-                            <input type="number" name="age" id="age" value={formData.age} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="age" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Age</label>
+                            <input type="number" name="age" id="age" value={formData.age} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div className="md:col-span-1">
-                            <label htmlFor="sex" className="block text-sm font-medium text-slate-700">Sex</label>
-                            <select name="sex" id="sex" value={formData.sex} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+                            <label htmlFor="sex" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Sex</label>
+                            <select name="sex" id="sex" value={formData.sex} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
                          <div className="md:col-span-1">
-                            <label className="block text-sm font-medium text-slate-700">Calculated BMI</label>
-                            <div className="mt-1 px-3 py-2 block w-full rounded-md bg-slate-100 border-gray-300">
-                                {bmi ? <span className="font-bold text-slate-800">{bmi}</span> : <span className="text-slate-500">Enter Height/Weight</span>}
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Calculated BMI</label>
+                            <div className="mt-1 px-3 py-2 block w-full rounded-md bg-slate-100 dark:bg-slate-700 border-gray-300 dark:border-slate-600">
+                                {bmi ? <span className="font-bold text-slate-800 dark:text-slate-100">{bmi}</span> : <span className="text-slate-500 dark:text-slate-400">Enter Height/Weight</span>}
                             </div>
                         </div>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label htmlFor="height_cm" className="block text-sm font-medium text-slate-700">Height (cm)</label>
-                            <input type="number" name="height_cm" id="height_cm" value={formData.height_cm} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="height_cm" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Height (cm)</label>
+                            <input type="number" name="height_cm" id="height_cm" value={formData.height_cm} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="weight_kg" className="block text-sm font-medium text-slate-700">Weight (kg)</label>
-                            <input type="number" name="weight_kg" id="weight_kg" value={formData.weight_kg} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="weight_kg" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Weight (kg)</label>
+                            <input type="number" name="weight_kg" id="weight_kg" value={formData.weight_kg} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                          <div>
-                            <label htmlFor="bp_systolic" className="block text-sm font-medium text-slate-700">Systolic BP (mmHg)</label>
-                            <input type="number" name="bp_systolic" id="bp_systolic" value={formData.bp_systolic} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="bp_systolic" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Systolic BP (mmHg)</label>
+                            <input type="number" name="bp_systolic" id="bp_systolic" value={formData.bp_systolic} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="bp_diastolic" className="block text-sm font-medium text-slate-700">Diastolic BP (mmHg)</label>
-                            <input type="number" name="bp_diastolic" id="bp_diastolic" value={formData.bp_diastolic} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="bp_diastolic" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Diastolic BP (mmHg)</label>
+                            <input type="number" name="bp_diastolic" id="bp_diastolic" value={formData.bp_diastolic} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                         <div>
-                            <label htmlFor="fasting_glucose" className="block text-sm font-medium text-slate-700">Fasting Glucose (mg/dL)</label>
-                            <input type="number" name="fasting_glucose" id="fasting_glucose" value={formData.fasting_glucose} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required />
+                            <label htmlFor="fasting_glucose" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Fasting Glucose (mg/dL)</label>
+                            <input type="number" name="fasting_glucose" id="fasting_glucose" value={formData.fasting_glucose} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required />
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                          <div>
-                            <label htmlFor="known_conditions" className="block text-sm font-medium text-slate-700">Known Conditions (comma-separated)</label>
-                            <input type="text" name="known_conditions" id="known_conditions" value={formData.known_conditions} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                            <label htmlFor="known_conditions" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Known Conditions (comma-separated)</label>
+                            <input type="text" name="known_conditions" id="known_conditions" value={formData.known_conditions} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" />
                         </div>
                         <div>
-                            <label htmlFor="family_history" className="block text-sm font-medium text-slate-700">Family History (comma-separated)</label>
-                            <input type="text" name="family_history" id="family_history" value={formData.family_history} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                            <label htmlFor="family_history" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Family History (comma-separated)</label>
+                            <input type="text" name="family_history" id="family_history" value={formData.family_history} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="symptoms" className="block text-sm font-medium text-slate-700">Reported Symptoms (comma-separated)</label>
-                        <textarea name="symptoms" id="symptoms" value={formData.symptoms} onChange={handleChange} rows={2} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="e.g., frequent headaches, dizziness, fatigue"></textarea>
+                        <label htmlFor="symptoms" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Reported Symptoms (comma-separated)</label>
+                        <textarea name="symptoms" id="symptoms" value={formData.symptoms} onChange={handleChange} rows={2} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" placeholder="e.g., frequent headaches, dizziness, fatigue"></textarea>
                     </div>
                      <div>
-                        <label htmlFor="food_pattern_summary" className="block text-sm font-medium text-slate-700">Food Pattern Summary</label>
-                        <textarea name="food_pattern_summary" id="food_pattern_summary" value={formData.food_pattern_summary} onChange={handleChange} rows={3} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                        <label htmlFor="food_pattern_summary" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Food Pattern Summary</label>
+                        <textarea name="food_pattern_summary" id="food_pattern_summary" value={formData.food_pattern_summary} onChange={handleChange} rows={3} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"></textarea>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                         <div>
-                            <label htmlFor="activity_level" className="block text-sm font-medium text-slate-700">Activity Level</label>
-                            <select name="activity_level" id="activity_level" value={formData.activity_level} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+                            <label htmlFor="activity_level" className="block text-sm font-medium text-slate-700 dark:text-slate-300">Activity Level</label>
+                            <select name="activity_level" id="activity_level" value={formData.activity_level} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-slate-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200" required>
                                 <option value="sedentary">Sedentary</option>
                                 <option value="low">Low</option>
                                 <option value="moderate">Moderate</option>
@@ -151,18 +151,18 @@ const Predictor: React.FC = () => {
                         </div>
                         <div className="flex items-start">
                             <div className="flex h-5 items-center">
-                                <input id="smoker" name="smoker" type="checkbox" checked={formData.smoker} onChange={handleChange} className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                                <input id="smoker" name="smoker" type="checkbox" checked={formData.smoker} onChange={handleChange} className="h-4 w-4 rounded border-gray-300 dark:border-slate-500 text-blue-600 focus:ring-blue-500 dark:bg-slate-600" />
                             </div>
                             <div className="ml-3 text-sm">
-                                <label htmlFor="smoker" className="font-medium text-slate-700">Smoker</label>
+                                <label htmlFor="smoker" className="font-medium text-slate-700 dark:text-slate-300">Smoker</label>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <div className="flex h-5 items-center">
-                                <input id="alcohol" name="alcohol" type="checkbox" checked={formData.alcohol} onChange={handleChange} className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                                <input id="alcohol" name="alcohol" type="checkbox" checked={formData.alcohol} onChange={handleChange} className="h-4 w-4 rounded border-gray-300 dark:border-slate-500 text-blue-600 focus:ring-blue-500 dark:bg-slate-600" />
                             </div>
                             <div className="ml-3 text-sm">
-                                <label htmlFor="alcohol" className="font-medium text-slate-700">Consumes Alcohol</label>
+                                <label htmlFor="alcohol" className="font-medium text-slate-700 dark:text-slate-300">Consumes Alcohol</label>
                             </div>
                         </div>
                     </div>
@@ -178,12 +178,12 @@ const Predictor: React.FC = () => {
             {isLoading && (
                 <div className="flex flex-col items-center justify-center py-10">
                     <Spinner />
-                    <p className="mt-4 text-lg text-slate-600">Generating AI prediction...</p>
+                    <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">Generating AI prediction...</p>
                 </div>
             )}
 
             {error && (
-                <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md shadow-md" role="alert">
+                <div className="bg-red-100 dark:bg-red-900/30 border-l-4 border-red-500 text-red-700 dark:text-red-300 p-4 rounded-md shadow-md" role="alert">
                     <p className="font-bold">Error</p>
                     <p>{error}</p>
                 </div>
@@ -195,6 +195,11 @@ const Predictor: React.FC = () => {
                     <Recommendations recommendations={prediction.recommendations} />
                 </div>
             )}
+
+            <div className="bg-yellow-50 dark:bg-yellow-900/30 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-300 p-4 rounded-md" role="alert">
+                <h4 className="font-bold">Disclaimer</h4>
+                <p className="text-sm">This information is for educational purposes only and is not a substitute for professional medical advice. Always consult a healthcare professional for medical advice.</p>
+            </div>
         </div>
     );
 };
